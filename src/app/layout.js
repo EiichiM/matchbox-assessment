@@ -1,6 +1,4 @@
 import "./globals.css";
-import "./tailwindClasses.css";
-import "./page.module.css";
 import LayoutProvider from "@/components/LayoutProvider";
 import { Inter } from "next/font/google";
 

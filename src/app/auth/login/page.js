@@ -72,19 +72,27 @@ function Login() {
             <Checkbox label="Keep me logged in" />
             <button
               className={
-                buttonDisabled ? "disabled-btn button-log" : "button-log"
+                buttonDisabled
+                ? "disabled-btn text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-m px-5 py-2.5  mb-2"
+                : "btn-home text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-m px-5 py-2.5  mb-2"
               }
               onClick={onLogin}
             >
               Login
             </button>
-            <Link className="color-cyan" href="/auth/reset-password">
+            <Link
+              className="color-cyan hover:underline dark:text-blue-500"
+              href="/auth/reset-password"
+            >
               Forgot Pasword?
             </Link>
             <span className="color-grey text-bold text-center">
               Dont have an account? Contact Support: <br />
               support@matchboxvirtual.com <br />
-              <Link className="color-grey link-animation" href="/auth/register">
+              <Link
+                className="text-blue-600 hover:underline dark:text-blue-500"
+                href="/auth/register"
+              >
                 Or Register here
               </Link>
             </span>

@@ -88,14 +88,19 @@ function Register() {
 
             <button
               className={
-                buttonDisabled ? "disabled-btn button-log" : "button-log"
+                buttonDisabled
+                  ? "disabled-btn text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-m px-5 py-2.5  mb-2"
+                  : "btn-home text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-m px-5 py-2.5  mb-2"
               }
               onClick={onRegister}
             >
               Register
             </button>
 
-            <Link className="color-grey link-animation" href="/auth/login">
+            <Link
+              className="text-blue-600 hover:underline dark:text-blue-500"
+              href="/auth/login"
+            >
               Already have an account? Login
             </Link>
           </div>

@@ -81,7 +81,9 @@ function ResetPassword() {
 
               <button
                 className={
-                  email.length === 0 ? "disabled-btn button-log" : "button-log"
+                  email.length === 0
+                    ? "disabled-btn text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    : "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                 }
                 onClick={sendEmail}
               >
@@ -134,8 +136,8 @@ function ResetPassword() {
                   password.length === 0 ||
                   confirmPassword.length === 0 ||
                   !passwordsMatch
-                    ? "disabled-btn button-log"
-                    : "button-log"
+                    ? "disabled-btn text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-m px-5 py-2.5  mb-2"
+                    : "btn-home text-white focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-m px-5 py-2.5  mb-2"
                 }
                 onClick={resetPassword}
               >
