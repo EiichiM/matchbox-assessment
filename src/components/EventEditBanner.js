@@ -104,7 +104,10 @@ export function EventEditBanner({ image }) {
                 />
               </h3>
             </div>
+
             <img src={pathImage} alt="Banner Image" width={300} />
+            {uploadingStatus && <p>{uploadingStatus}</p>}
+            {uploadedFile && <img src={uploadedFile} />}
           </div>
         </div>
       </div>
