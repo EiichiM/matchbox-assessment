@@ -15,7 +15,7 @@ function Checkbox({ label, onChange, value }) {
         />
       </div>
       <label
-        for="remember"
+        htmlFor="remember"
         className="ml-2 text-sm font-medium color-grey dark:text-gray-300"
       >
         {label}

@@ -32,7 +32,7 @@ export function EventEdit({ image }) {
 
             <div className="p-6 space-y-6">
               <label
-                for="name"
+                htmlFor="name"
                 className="block mb-2 text-m  text-gray-900 dark:text-white"
               >
                 Set the event name
@@ -53,7 +53,7 @@ export function EventEdit({ image }) {
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
-                  for="public"
+                  htmlFor="public"
                   class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Public
@@ -67,7 +67,7 @@ export function EventEdit({ image }) {
                   className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                 />
                 <label
-                  for="private"
+                  htmlFor="private"
                   className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Private
