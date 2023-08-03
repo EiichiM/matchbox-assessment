@@ -2,8 +2,10 @@
 import Link from "next/link";
 import { ImageDetail } from "./ImageDetail";
 import { useState } from "react";
+import Spinner from "@/components/Spinner";
 
 export function EventEditBanner({ image }) {
+  const [loading, setLoading] = useState(false);
   const [pathImage, setPathImage] = useState("");
   const onChangeFile = (e) => {
     if (e.target.files && e.target.file.length > 0) {
@@ -20,9 +22,24 @@ export function EventEditBanner({ image }) {
       }
     }
   };
+
+  const onAdvance = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/events/edit", pathImage);
+      toast.success(response.data.message);
+    } catch (error) {
+      console.log("error");
+      toast.error(error.response.data.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="">
+        {loading && <Spinner />}
         <div className="flex items-center justify-center h-100 py-5 bg-white">
           <div className="w-10/12">
             <div className="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
