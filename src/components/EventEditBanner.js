@@ -1,7 +1,25 @@
+"use client";
 import Link from "next/link";
 import { ImageDetail } from "./ImageDetail";
+import { useState } from "react";
 
-export function EventEdit({ image }) {
+export function EventEditBanner({ image }) {
+  const [pathImage, setPathImage] = useState("");
+  const onChangeFile = (e) => {
+    if (e.target.files && e.target.file.length > 0) {
+      const file = e.traget.file[0];
+      if (file.type.include("image")) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function load() {
+          setPathImage(reader.result);
+        };
+        setFile(file);
+      } else {
+        console.log("error not image");
+      }
+    }
+  };
   return (
     <>
       <div className="">
@@ -34,13 +52,14 @@ export function EventEdit({ image }) {
               <h3 className="mb-2 text-m text-white">
                 Is this a public or private event
                 <input
-                  class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                  class="block text-m text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 "
                   id="file_banner"
                   type="file"
+                  onChange={onChangeFile()}
                 />
               </h3>
             </div>
-            <ImageDetail />
+            <img src={pathImage} alt="Banner Image" width={300} />
           </div>
         </div>
       </div>

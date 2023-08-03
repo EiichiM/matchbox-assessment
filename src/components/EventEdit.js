@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function EventEdit({ image }) {
+export function EventEditName({ image }) {
   return (
     <>
       <div className="">

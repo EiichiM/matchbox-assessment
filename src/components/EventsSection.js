@@ -8,7 +8,7 @@ import { EventEdit } from "./EventEdit";
 // async function getEvent() {
 //   try {
 //     const response = await axios.get(
-//       `${process.env.domain}/api/events/edit`
+//       `${process.env.domain}/api/events/getEvent`
 //     );
 //     return response.data.data;
 //   } catch (error) {

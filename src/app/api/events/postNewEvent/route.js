@@ -16,8 +16,7 @@ export async function POST(request) {
       }
 
     // create event
-
-    const newEvent = new User(reqBody);
+    const newEvent = new Event(reqBody);
     const newEventResponse = await newEvent.save();
 
     return NextResponse.json({
