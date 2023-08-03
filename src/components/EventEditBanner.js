@@ -3,27 +3,55 @@ import Link from "next/link";
 import { ImageDetail } from "./ImageDetail";
 import { useState } from "react";
 import Spinner from "@/components/Spinner";
+import axios from "axios";
+
+const BUCKET_URL = ".amazonaws.com/";
 
 export function EventEditBanner({ image }) {
   const [loading, setLoading] = useState(false);
   const [pathImage, setPathImage] = useState("");
+  const [file, setFile] = useState(null);
+  const [uploadingStatus, setUploadingStatus] = useState();
+  const [uploadedFile, setUploadedFile] = useState();
+
   const onChangeFile = (e) => {
     if (e.target.files && e.target.file.length > 0) {
-      const file = e.traget.file[0];
-      if (file.type.include("image")) {
+      const fileInput = e.traget.file[0];
+      if (fileInput.type.include("image")) {
         const reader = new FileReader();
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(fileInput);
         reader.onload = function load() {
           setPathImage(reader.result);
         };
-        setFile(file);
+        setFile(fileInput);
       } else {
         console.log("error not image");
       }
     }
   };
 
-  const onAdvance = async () => {
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    setUploadingStatus("Uploading the file to AWS S3");
+    if (!file) return;
+
+    let { data } = await axios.post("/api/s3/uploadFile", {
+      name: file.name,
+      type: file.type,
+    });
+
+    console.log(data);
+
+    const url = data.url;
+    let { data: newData } = await axios.put(url, file, {
+      headers: {
+        "Content-type": file.type,
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+
+    setUploadedFile(BUCKET_URL + file.name);
+    setFile(null);
     try {
       setLoading(true);
       const response = await axios.post("/api/events/edit", pathImage);
