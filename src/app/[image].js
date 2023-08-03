@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/router";
+import { ImageDetail } from "../components/image-detail";
 
-function Event({ params }) {
+export default function ImagePage() {
   let router = useRouter();
-  let event = router.query.event;
-  console.log(router);
+  let image = router.query.image;
+
   return (
     <div className="relative w-screen h-screen bg-gray-800">
       <Link href="/">
@@ -13,21 +14,27 @@ function Event({ params }) {
           Back
         </a>
       </Link>
+
+      <div className="absolute inset-0">
+        <div className="flex items-center justify-center h-screen">
+          <div className="w-1/2">
+            <ImageDetail image={image} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default Event;
-
 export function getStaticPaths() {
   return {
     paths: [
-      { params: { event: "1" } },
-      { params: { event: "2" } },
-      { params: { event: "3" } },
-      { params: { event: "4" } },
-      { params: { event: "5" } },
-      { params: { event: "6" } },
+      { params: { image: "1" } },
+      { params: { image: "2" } },
+      { params: { image: "3" } },
+      { params: { image: "4" } },
+      { params: { image: "5" } },
+      { params: { image: "6" } },
     ],
     fallback: "blocking",
   };
@@ -36,7 +43,7 @@ export function getStaticPaths() {
 export function getStaticProps(context) {
   return {
     props: {
-      event: context.params.event,
+      image: context.params.image,
     },
   };
 }
